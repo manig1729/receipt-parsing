@@ -122,10 +122,18 @@ def build_model_and_processor(model_name: str, task_start_token: str):
     model.config.decoder_start_token_id = tokenizer.convert_tokens_to_ids(task_start_token)
     model.config.eos_token_id = tokenizer.eos_token_id
     model.config.max_length = 768
-    model.config.early_stopping = True
+    model.config.early_stopping = False
     model.config.no_repeat_ngram_size = 0
     model.config.length_penalty = 1.0
     model.config.num_beams = 1
+    model.generation_config.pad_token_id = tokenizer.pad_token_id
+    model.generation_config.decoder_start_token_id = tokenizer.convert_tokens_to_ids(task_start_token)
+    model.generation_config.eos_token_id = tokenizer.eos_token_id
+    model.generation_config.max_length = 768
+    model.generation_config.early_stopping = False
+    model.generation_config.no_repeat_ngram_size = 0
+    model.generation_config.length_penalty = 1.0
+    model.generation_config.num_beams = 1
 
     return model, processor
 
