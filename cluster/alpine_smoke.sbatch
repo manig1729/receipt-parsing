@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=donut-smoke
-#SBATCH --partition=atesting_a100
-#SBATCH --qos=testing
+#SBATCH --partition=aa100
+#SBATCH --qos=normal
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:1
-#SBATCH --mem=36G
+#SBATCH --mem=32G
 #SBATCH --time=00:45:00
 #SBATCH --output=slurm-%j.out
 
