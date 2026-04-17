@@ -13,6 +13,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="${SLURM_SUBMIT_DIR}"
+VENV_DIR="${VENV_DIR:-/scratch/alpine/$USER/receipt-parsing/.venv}"
 RUN_DIR="${PROJECT_ROOT}/outputs/full/${SLURM_JOB_ID}"
 RUN_LOG="${PROJECT_ROOT}/logs/full-${SLURM_JOB_ID}.log"
 
@@ -28,9 +29,9 @@ module purge || true
 module load anaconda
 
 cd "${PROJECT_ROOT}"
-source .venv/bin/activate
+source "${VENV_DIR}/bin/activate"
 
-export HF_HOME="${PROJECT_ROOT}/.hf-cache"
+export HF_HOME="/scratch/alpine/$USER/receipt-parsing/.hf-cache"
 export TOKENIZERS_PARALLELISM=false
 
 nvidia-smi || true
