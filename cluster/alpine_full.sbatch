@@ -29,6 +29,7 @@ module purge || true
 module load anaconda
 
 cd "${PROJECT_ROOT}"
+unset CONDA_PREFIX CONDA_DEFAULT_ENV CONDA_EXE CONDA_PROMPT_MODIFIER CONDA_PYTHON_EXE CONDA_SHLVL _CE_CONDA _CE_M
 source "${VENV_DIR}/bin/activate"
 
 export HF_HOME="/scratch/alpine/$USER/receipt-parsing/.hf-cache"
